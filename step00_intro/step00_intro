@@ -1,0 +1,12 @@
+[형태]
+Server : http://localhost:8080/step00_intro/FisrtServlet
+	- http:// : 프로토콜
+	- localhost : IP
+	- 8080 : PortNumber
+	- step00_intro : ProjectName
+	- FirstServlet : 자원 경로
+프로토콜://ip주소:포트넘버/프로젝트명/자원경로
+
+
+컨테이너 : 동적 콘텐츠를 처리하는 프로그램
+	- 데이터를 뿌려주는 부분
