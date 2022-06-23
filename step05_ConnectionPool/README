@@ -1,0 +1,25 @@
+[학습]
+1. DB 시스템의 동시 접속자 수를 제한
+
+2. 방법
+	- 서버별로 메뉴얼 : https://tomcat.apache.org/
+	- 시스템 사양에 적합한 Connection 객체 수를 조정
+	- 표준화 되어 있는 코드를 사용
+
+3. 원리
+	- 정해진 Connection 객체 수에 한해서 생성 및 유지
+	- 서버 시작시 미리 생성된 Connection객체를 대기
+	
+4. 실습
+	-필요한 Library
+		- commons-collections4-4.4.jar
+		- commons-dbcp2-2.9.0.jar
+		- commons-pool2-2.11.1.jar
+	- 설정
+	
+		Server
+			- context.xml 1
+		WEB-INF
+			- web.xml 2
+		src
+			-DBUtil.java 3 db접근 
