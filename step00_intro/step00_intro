@@ -1,12 +1,7 @@
-[ÇüÅÂ]
 Server : http://localhost:8080/step00_intro/FisrtServlet
-	- http:// : ÇÁ·ÎÅäÄİ
+	- http:// : í”„ë¡œí† ì½œ
 	- localhost : IP
 	- 8080 : PortNumber
 	- step00_intro : ProjectName
-	- FirstServlet : ÀÚ¿ø °æ·Î
-ÇÁ·ÎÅäÄİ://ipÁÖ¼Ò:Æ÷Æ®³Ñ¹ö/ÇÁ·ÎÁ§Æ®¸í/ÀÚ¿ø°æ·Î
-
-
-ÄÁÅ×ÀÌ³Ê : µ¿Àû ÄÜÅÙÃ÷¸¦ Ã³¸®ÇÏ´Â ÇÁ·Î±×·¥
-	- µ¥ÀÌÅÍ¸¦ »Ñ·ÁÁÖ´Â ºÎºĞ
+	- FirstServlet : ìì›ê²½ë¡œ
+	í”„ë¡œí† ì½œ://ipì£¼ì†Œ:8080/í”„ë¡œì íŠ¸ëª…/ìì›ê²½ë¡œ

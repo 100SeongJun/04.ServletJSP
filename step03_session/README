@@ -1,0 +1,27 @@
+step03_session
+
+[학습]
+
+1. Client에 데이터 저장
+	 - 파일
+	 - 브라우저 메모리 저장
+	 - Server 입장에서는 메모리 부담이 덜함
+	 - Client가 정보를 삭제 -> 해결방법이 없음
+	 - Cookie
+	 
+	 
+	 - 실습
+	 	- Client 접속 승인
+	 	- 접속한 Client가 상태 유지를 위한 시도
+	 	- 고유한 정보로 Cookie 객체 생성
+	 		- Map - Key : Value
+ 		- Cookie 객체의 정보를 Client 시스템에 저장
+ 		- 이동한 Web page에서 Client 시스템에 있는 Cookie 정보를 획득, 사용
+ 		- 상태 유지 비활성화시 Client 시스템의 쿠키 정보 삭제
+ 		
+2. Server 시스템에 데이터 저장 : Session
+	- 서버의 메모리에 데이터 저장
+	- Session
+		- 
+		- 
+		- 

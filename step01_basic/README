@@ -1,1 +1,54 @@
-Request(요청) / Response(응답)
+[학습]
+1. 스펙
+	Servlet
+		- *.java
+		- java + html tag..
+		- controller
+	
+	JSP
+		- *.jsp
+		- html/css/JSP tag /java
+		- View
+		
+2. Server
+	- tomcat Server: WAS(Web Application server)
+
+3. HTTP 통신
+	- get
+		- Method 생략 시 기본 방식
+		- 미보안 데이터를 서버 전송
+		- 쿼리 스트링 전달
+			- 웹 클라이언트에서 웹 서버로 정보를 요청할 때 정해진 방식으로 전달하는 데이터 문자열
+			- 규칙
+				- name1 =value&name2=value&...
+				- 영문자, 숫자, 일부 특수 문자 제외한 나머지는 %와 함께 16진수로 변환되어 전달
+				- 공백은 + 기호로 연결됨
+				
+		- 서버에 전달하는 데이터 양이 한정적(소량)인 경우에 사용
+	
+	- post
+		- method 명시
+		- 보안 고려한 데이터를 서버 전송
+		- dopost()
+	
+4. API
+	- HttpServletRequest
+		- Client가 전송하는 데이터를 서버에 제공
+		- 요청하는 정보를 공유
+		- getParameter("name"), ...
+	
+	- HttpServletResponse
+		- 서버가 데이터를 Client에 전송
+		- setContentType("MIME TYPE, 인코딩");
+			-https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+		- PrintWriter getWriter()
+		- ...
+	
+	- HttpServlet
+		- Client와 서버간의 통신 규약인 http를 이미 완벽에 가까이 구현한 클래스
+		- doGet(request,response);
+		- doPost(request,response);
+	
+	- 참고)
+		Client가 100명 요청 : Servlet 객체 수: HttpServletRequest 객체 수 : HttpServletResponse 객체 수
+		100 : 1 : 100 : 100
