@@ -1,4 +1,4 @@
-package douzone.controller;
+package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.InstructorDAO;
-import model.ManagerDAO;
-import model.StudentDAO;
-import service.CategorynCRUD;
+import service.CategoryCRUD;
 
 @WebServlet("/douzone")
 public class DouzoneServlet extends HttpServlet {
@@ -23,10 +20,7 @@ public class DouzoneServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String cmd = request.getParameter("cmd");
 		String type = request.getParameter("type");
-//		System.out.println(cmd);
-//		System.out.println(type);
-//		String type = request.getParameter("type");
-//서브에서의 main
+
 		if (cmd == null) {
 			cmd = "main";
 		}
@@ -38,39 +32,37 @@ public class DouzoneServlet extends HttpServlet {
 	}
 
 	private void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "error.jsp";
 		try {
-			url = "main.jsp";
-			request.getRequestDispatcher(url).forward(request, response);
+			request.getRequestDispatcher("main.jsp").forward(request, response);
 			;
 		} catch (IOException e) {
-			response.sendRedirect(url);
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 
 	private void getCRUD(String type, String cmd, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String url = CategorynCRUD.category(cmd);
-			if (type == null) {
-				request.getRequestDispatcher(url).forward(request, response);
-			} else {
-				switch (type) {
-				case "Student":
-					request.setAttribute("allStudent", StudentDAO.getAllStudent());
-					break;
-				case "Instructor":
-					request.setAttribute("allInstructor", InstructorDAO.getAllInstructor());
-					break;
-				case "Manager":
-					request.setAttribute("allManager", ManagerDAO.getAllManager());
-					break;
-				}
-				request.getRequestDispatcher(url).forward(request, response);
+			String url = CategoryCRUD.category(cmd, type, request, response);
+			if (url == null) {
+				request.getRequestDispatcher("main.jsp").forward(request, response);
+				return;
 			}
+			request.getRequestDispatcher(url).forward(request, response);
+			return;
 		} catch (SQLException e) {
 			request.getRequestDispatcher("error.jsp").forward(request, response);
+			return;
 		}
+		/*-
+		 * // 메소드화 switch (type) 
+		 * { case "Student": request.setAttribute("allStudent",
+		 * StudentDAO.getAllStudent()); break; case "Instructor":
+		 * request.setAttribute("allInstructor", InstructorDAO.getAllInstructor());
+		 * break; case "Manager": request.setAttribute("allManager",
+		 * ManagerDAO.getAllManager()); break; } 타입에따라 db접근이 달라짐
+		 */
+//			CheckType.checkType(type, request, response);
 	}
 
 }

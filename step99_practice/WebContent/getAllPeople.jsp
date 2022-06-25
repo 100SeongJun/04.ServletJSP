@@ -29,7 +29,7 @@ text-align: center;
 </head>
 <body>
 	<a href="douzone">홈</a>
-	<c:if test="${param.type== 'Student'}">
+	<c:if test="${param.type=='Student'}">
 	<table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" bordercolordark="white" bordercolorlight="black">
 	<th>나이</th><th>이름</th><th>지각</th><th>결석</th><th>매니저ID</th>
 	<c:forEach items="${requestScope.allStudent}" var="data">

@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +13,22 @@ import guestbook.model.GuestBookBean;
 import guestbook.model.GuestBookDAO;
 
 public class GuestBookServlet extends HttpServlet {
+//    String env; 
+//    // config 값 추출하는 방법 1
+//    public void init(ServletConfig config) {
+//       System.out.println(config.getInitParameter("id"));
+//       env = config.getInitParameter("charset"); 
+//    }
+
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		// config 값 추출하는 방법 2
+		String env = this.getInitParameter("charset");
+		request.setCharacterEncoding(env);
+
+		// Servlet Context
+		ServletContext sc = this.getServletContext();
+		System.out.println(sc.getInitParameter("contextConfig"));
 
 		String command = request.getParameter("command");
 
@@ -68,15 +82,12 @@ public class GuestBookServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String content = request.getParameter("content");
 		String password = request.getParameter("password");
-
-		// 업데이트 공백 입력 시 예외처리
 		if (strNum == null || strNum.trim().length() == 0 || title == null || title.trim().length() == 0
 				|| author == null || author.trim().length() == 0 || email == null || email.trim().length() == 0
 				|| content == null || content.trim().length() == 0 || password == null
 				|| password.trim().length() == 0) {
 			response.sendRedirect("guestbook.do");
-			return; // 함수 종료
-
+			return;
 		}
 		boolean result = false;
 		try {
